@@ -14,7 +14,7 @@ const PostCard = ({ post }) => {
           className="absolute object-cover object-top w-full rounded-t-lg shadow-lg h-80 lg:rounded-lg"
         />
       </div>
-      <h1 className="mb-8 text-3xl font-semibold text-center transition-all cursor-pointer transi hover:text-pink-600">
+      <h1 className="mb-8 text-3xl font-semibold text-center transition-all cursor-pointer hover:text-pink-600 ">
         <Link href={`/post/${post.slug}`}>{post.title}</Link>
       </h1>
       <div className="items-center justify-center block w-full mb-8 text-center lg:flex">
@@ -53,7 +53,7 @@ const PostCard = ({ post }) => {
       </p>
       <div className="text-center ">
           <Link href={`/post/${post.slug}`}>
-              <span className="inline-block px-8 py-3 text-lg font-medium text-white transition-all transform bg-pink-600 rounded-full shadow-lg cursor-pointer hover:-translate-y-1 hover:shadow-none hover:bg-pink-700">
+              <span className="inline-block px-8 py-3 text-lg font-medium text-white transition-all transform bg-pink-600 rounded-full shadow-lg cursor-pointer hover:-translate-y-1 hover:shadow-inner hover:bg-pink-700 ">
                   Continue reading
               </span>
           </Link>
