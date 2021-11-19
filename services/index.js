@@ -14,9 +14,9 @@ export const getPosts = async () => {
               id
               photo {
                 url
-                createdAt
               }
             }
+            createdAt
             slug
             title
             excerpt
@@ -75,8 +75,10 @@ export const getSimilarPosts = async () => {
         slug
       }
     }
-  `
+  `;
   const result = await request(graphqlAPI, query);
 
   return result.posts;
-}
+};
+
+// export const
