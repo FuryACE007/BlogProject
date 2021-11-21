@@ -3,7 +3,6 @@ import moment from "moment"; //loading date
 import Link from "next/dist/client/link";
 
 const PostCard = ({ post }) => {
-  console.log(post);
 
   return (
     <div className="p-0 pb-12 mb-8 bg-gray-200 rounded-lg shadow-lg lg:p-8 ">
@@ -14,7 +13,7 @@ const PostCard = ({ post }) => {
           className="absolute object-cover object-top w-full rounded-t-lg shadow-lg h-80 lg:rounded-lg"
         />
       </div>
-      <h1 className="mb-8 text-3xl font-semibold text-center transition-all cursor-pointer hover:text-pink-600 ">
+      <h1 className="mb-8 text-3xl font-semibold text-center transition duration-300 cursor-pointer hover:text-indigo-600 ">
         <Link href={`/post/${post.slug}`}>{post.title}</Link>
       </h1>
       <div className="items-center justify-center block w-full mb-8 text-center lg:flex">
@@ -33,7 +32,7 @@ const PostCard = ({ post }) => {
         <div className="font-medium text-gray-700">
           <svg
             xmlns="http://www.w3.org/2000/svg"
-            className="inline w-6 h-6 mr-2 text-pink-500"
+            className="inline w-6 h-6 mr-2 text-indigo-500"
             fill="none"
             viewBox="0 0 24 24"
             stroke="currentColor"
@@ -53,7 +52,7 @@ const PostCard = ({ post }) => {
       </p>
       <div className="text-center ">
           <Link href={`/post/${post.slug}`}>
-              <span className="inline-block px-8 py-3 text-lg font-medium text-white transition-all transform bg-indigo-600 rounded-full shadow-lg cursor-pointer hover:-translate-y-1 hover:shadow-inner hover:bg-indigo-700 ">
+              <span className="inline-block px-8 py-3 text-lg font-medium text-white transition duration-500 transform bg-indigo-500 rounded-full shadow-lg cursor-pointer hover:-translate-y-1 hover:shadow-inner hover:bg-indigo-600 ">
                   Continue reading
               </span>
           </Link>
