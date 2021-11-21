@@ -5,7 +5,7 @@ import Link from "next/dist/client/link";
 const PostCard = ({ post }) => {
 
   return (
-    <div className="p-0 pb-12 mb-8 bg-gray-200 rounded-lg shadow-lg lg:p-8 ">
+    <div className="p-0 pb-12 mb-8 rounded-lg shadow-lg bg-gradient-to-r from-gray-200 via-gray-400 to-gray-500 lg:p-8 ">
       <div className="relative mb-6 overflow-hidden shadow-md pb-80">
         <img
           src={post.featuredImage.url}
@@ -52,7 +52,7 @@ const PostCard = ({ post }) => {
       </p>
       <div className="text-center ">
           <Link href={`/post/${post.slug}`}>
-              <span className="inline-block px-8 py-3 text-lg font-medium text-white transition duration-500 transform bg-indigo-500 rounded-full shadow-lg cursor-pointer hover:-translate-y-1 hover:shadow-inner hover:bg-indigo-600 ">
+              <span className="inline-block px-8 py-3 text-lg font-medium text-white transition transform bg-indigo-500 rounded-full shadow-lg cursor-pointer duration-400 hover:-translate-y-1 hover:shadow-inner hover:bg-indigo-600 ">
                   Continue reading
               </span>
           </Link>
