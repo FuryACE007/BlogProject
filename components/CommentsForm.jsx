@@ -1,6 +1,8 @@
 import React, { useState, useEffect, useRef } from "react";
 
-const CommentsForm = () => {
+import { submitComment } from "../services";
+
+const CommentsForm = ({ slug }) => {
   const [error, setError] = useState(false);
   const [localStorage, setLocalStorage] = useState(null);
   const [showSuccessMessage, setShowSuccessMessage] = useState(false);
@@ -8,6 +10,12 @@ const CommentsForm = () => {
   const nameEl = useRef();
   const emailEl = useRef();
   const storeDataEl = useRef();
+
+  useEffect(() => {
+    nameEl.current.value = window.localStorage.getItem('name');
+    emailEl.current.value = window.localStorage.getItem('email');
+    
+  }, [])
 
   const handleCommentSubmission = () => {
     setError(false);
@@ -22,21 +30,29 @@ const CommentsForm = () => {
       return;
     }
 
-    const commentObj = { name, email, comment, slug };
+    const commentObj = { name, email, slug, comment };
 
     if (storeData) {
-      localStorage.setItem("name", name);
-      localStorage.setItem("email", email);
+      window.localStorage.setItem("name", name);
+      window.localStorage.setItem("email", email);
     } else {
-      localStorage.removeItem("name", name);
-      localStorage.removeItem("email", email);
+      window.localStorage.removeItem("name", name);
+      window.localStorage.removeItem("email", email);
     }
+
+    submitComment(commentObj)
+      .then((res) => {
+        setShowSuccessMessage(true);
+        setTimeout(() => {
+          setShowSuccessMessage(false);
+        }, 3000);
+      })
   };
 
   return (
     <div className="bg-gradient-to-r from-gray-300 via-gray-400 to-gray-500 shadow-lg rounded-lg pb-8 mb-8">
       <h3 className="text-xl rounded-lg p-8 mb-8 border-b pb-4">
-        CommentsForm
+        Leave a Reply 
       </h3>
       <div className="grid grid-cols-1 gap-4 mb-4 px-5 opacity-60 backdrop-blur-md backdrop-opacity-20">
         <textarea
@@ -91,7 +107,7 @@ const CommentsForm = () => {
         >
           Post Comment
         </button>
-        {showSuccessMessage && <span>Comment submitted for review</span>}
+        {showSuccessMessage && <span className="text-green-600 font-semibold">Comment submitted for review</span>}
       </div>
     </div>
   );
